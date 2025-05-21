@@ -1,0 +1,4 @@
+llama_cloud_services==0.6.23
+llama_index==0.12.37
+pandas==2.2.3
+python-dotenv==1.1.0
