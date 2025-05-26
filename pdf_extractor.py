@@ -19,8 +19,6 @@ load_dotenv()
 
 
 def LlamaParser(ruta_archivo):
-    print(f"LlamaParser llamado con: {ruta_archivo}")
-    ruta_archivo = ruta_archivo.split("ArKG-Chile-DataPipeline/")[1]
     parser = LlamaParse(result_type="markdown")
     file_extractor = {".pdf": parser}
     documents = SimpleDirectoryReader(
