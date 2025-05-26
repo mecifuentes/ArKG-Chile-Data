@@ -4,6 +4,7 @@ Collaborative tool that extracts archaeological data from scanned PDFs using Lla
 ## Requirements
 
 - Python 3.10 or higher
+- GIT
 - pip (Python package installer)
 - LlamaParse API key
 - OpenAI API key
@@ -13,8 +14,8 @@ Collaborative tool that extracts archaeological data from scanned PDFs using Lla
 
 Clone this repository:
 ```
-bashgit clone https://github.com/mecifuentesArKG-Chile-DataPipeline.git
-cd ArKG-Chile-DataPipeline
+git clone https://github.com/mecifuentes/ArKG-Chile-Data.git
+cd ArKG-Chile-Data
 ```
 Create and activate a virtual environment (recommended):
 ```
