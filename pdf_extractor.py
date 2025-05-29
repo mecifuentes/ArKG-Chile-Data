@@ -19,7 +19,11 @@ load_dotenv()
 
 
 def LlamaParser(ruta_archivo):
-    parser = LlamaParse(result_type="markdown")
+    global name_archivo
+    name_archivo = os.path.basename(ruta_archivo).split('.')[0]
+    parser = LlamaParse(result_type="markdown",
+                        premium_mode=True,
+                        language="es")
     file_extractor = {".pdf": parser}
     documents = SimpleDirectoryReader(
         input_files=[ruta_archivo], file_extractor=file_extractor
@@ -53,6 +57,23 @@ def extraer_tabla_de_response(response: str) -> pd.DataFrame:
 
 
 def CallOpenAI(tablas):
+    partial_path = os.path.abspath("Partial_tables")
+    if os.path.exists(partial_path):
+        #delete existing files in the directory
+        for file in os.listdir(partial_path):
+            file_path = os.path.join(partial_path, file)
+            try:
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+            except Exception as e:
+                messagebox.showerror("Error", f"No se pudo eliminar el archivo:\n{e}")
+                return
+    else:
+        try:
+            os.makedirs(partial_path)
+        except Exception as e:
+            messagebox.showerror("Error", f"No se pudo crear la carpeta:\n{e}")
+            return
     prompt_default = """Se te entregara una tabla en formato markdown,
         corrige posibles errores en la estructura
         y evalua una nota BAJA-MEDIA-ALTA
@@ -112,25 +133,23 @@ def MergeTablas(path):
     if not dfs:
         print("No valid CSV files could be read")
         return None
+    
+    os.makedirs(f"Results/{name_archivo}", exist_ok=True)
+    for i, df in enumerate(dfs):
+        #save it in Results/{name_archivo}
 
-    merged_df = pd.concat(dfs, ignore_index=True, sort=False)
+        df.to_csv(f"Results/{name_archivo}/tabla_{i}.csv", index=False)
 
-    merged_df = merged_df.where(pd.notnull(merged_df), None)
-
-    output_file = "Results/merged_tables.csv"
-    merged_df.to_csv(output_file, index=False)
-    print(f"Merged table saved to {output_file}")
-    for file in csv_files:
-        # Skip the merged file if it's in the same directory
-        if file == output_file:
-            continue
-
+    #delete all files in Partial_tables
+    for file in os.listdir(path):
+        file_path = os.path.join(path, file)
         try:
-            os.remove(file)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
         except Exception as e:
-            print(f"Error deleting {file}: {e}")
+            print(f"Error deleting file {file}: {e}")
 
-    return merged_df
+
 
 
 def mostrar_bienvenida():
@@ -209,6 +228,7 @@ def mostrar_cuarta_etapa(num_tablas):
 def primer_click_revisar():
     global partial_path
     partial_path = os.path.abspath("Partial_tables")
+    
     system = platform.system()
     try:
         if system == "Windows":
