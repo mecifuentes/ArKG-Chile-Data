@@ -39,6 +39,19 @@ Create a .env file in the project root with your API keys:
 LLAMA_CLOUD_API_KEY=your_llamaparse_key
 OPENAI_API_KEY=your_openai_key
 ```
+## Update
+### Standard Git Update
+
+Open a terminal in the ArKG-Chile-Data folder:
+```
+# On Windows
+venv\Scripts\activate
+git pull
+
+# On macOS/Linux
+source venv/bin/activate
+git pull
+```
 
 ## Usage
 This work consist in two steps, extraction of data and then format of data to save in a DB.
@@ -52,3 +65,8 @@ There is an example of usage:
 ```
 python pdf_extractor.py
 ```
+
+Then, follow the instructions.
+1. Verify that the extracted files contain date stamp information.
+2. Delete unrelated tables.
+3. Continue.
