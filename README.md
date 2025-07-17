@@ -39,6 +39,7 @@ uv run python pdf_extractor.py
 ## 📋 Requisitos
 
 - Python 3.10 o superior  
+- GIT
 - UV (gestor de paquetes rápido de Python)
 - Clave API de LlamaParse ([obtener aquí](https://cloud.llamaindex.ai/))
 - Clave API de OpenAI ([obtener aquí](https://platform.openai.com/api-keys))
@@ -75,6 +76,18 @@ Crear archivo `.env`:
 ```
 LLAMA_CLOUD_API_KEY=tu_clave_llamaparse
 OPENAI_API_KEY=tu_clave_openai
+```
+
+### Actualización estándar con Git
+Abre una terminal en la carpeta ArKG-Chile-Data:
+```bash
+# En Windows
+venv\Scripts\activate
+git pull
+
+# En macOS/Linux
+source venv/bin/activate
+git pull
 ```
 
 </details>
@@ -143,6 +156,11 @@ Este trabajo consiste en dos pasos principales:
 La lógica completa está contenida en `pdf_extractor.py`.
 
 El script despliega una interfaz gráfica que permite al usuario seleccionar un documento (solo PDF por ahora) para extraer la información.
+
+Luego, sigue las instrucciones:
+1. Verifica que los archivos extraídos contengan información de fecha/timestamp
+2. Elimina tablas no relacionadas
+3. Continúa con el procesamiento
 
 ### 2. Formato de datos
 Los datos extraídos se formatean para guardar en una base de datos estructurada.
