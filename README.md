@@ -42,9 +42,7 @@ Abre una terminal en la carpeta ArKG-Chile-Data:
 # En Windows y macOS/Linux
 venv\Scripts\activate
 git pull
-
-</details>
-
+```
 ## 🎯 Uso
 
 ### Comando básico
