@@ -1,0 +1,23 @@
+[project]
+name = "arkg-chile-data"
+version = "0.1.0"
+description = "Collaborative tool that extracts archaeological data from scanned PDFs using LlamaParse and OpenAI API"
+authors = [
+    {name = "arqueomendez", email = ""},
+]
+dependencies = [
+    "llama-cloud-services==0.6.23",
+    "llama-index==0.12.37",
+    "pandas==2.2.3",
+    "python-dotenv==1.1.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+package = false
+managed = true
