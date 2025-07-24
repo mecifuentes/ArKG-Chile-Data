@@ -40,7 +40,6 @@ uv run pdf_extractor.py
 Abre una terminal en la carpeta ArKG-Chile-Data:
 ```bash
 # En Windows y macOS/Linux
-venv\Scripts\activate
 git pull
 ```
 ## 🎯 Uso
