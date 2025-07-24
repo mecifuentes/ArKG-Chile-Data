@@ -29,8 +29,8 @@ uv init
 uv add -r requirements.txt
 
 # Crear archivo .env con tus claves
-# LLAMA_CLOUD_API_KEY=tu_clave
-# OPENAI_API_KEY=tu_clave
+LLAMA_CLOUD_API_KEY=tu_clave
+OPENAI_API_KEY=tu_clave
 
 # Ejecutar
 uv run pdf_extractor.py
