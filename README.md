@@ -56,13 +56,10 @@ ArKG-Chile-Data/
 ├── .env                        # Claves API (crear manualmente)
 ├── .venv/                      # Entorno virtual (creado por UV)
 ├── pyproject.toml              # Configuración del proyecto
-├── setup_uv.py                 # Script de configuración automática
-├── Makefile                    # Automatización de tareas
 ├── pdf_extractor.py            # Script principal
 ├── requirements.txt            # Dependencias legacy
 ├── Data/                       # Datos de entrada
 ├── Results/                    # Resultados procesados
-├── README_UV.md                # Instrucciones detalladas UV
 └── README.md                   # Este archivo
 ```
 
